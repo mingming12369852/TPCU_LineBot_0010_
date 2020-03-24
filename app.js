@@ -15,7 +15,7 @@ app.get('/',function(req,res){
     res.send('Hello World!');
 });
 
-app.post('/', linebotParser);
+app.post('/LineChat', linebotParser);
 
 bot.on('message', function (event) {
 	event.reply(event.message.text).then(function (data) {
