@@ -25,6 +25,7 @@ bot.on('message', function (event) {
 	});
 });
 
-app.listen(process.env.PORT || 80, function () {
-	console.log('LineBot is running.');
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
 });
