@@ -1,7 +1,7 @@
 const linebot = require('linebot');
 const express = require('express');
 
-const id_mod = require('./student_ID');
+// const id_mod = require('./student_ID');
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
