@@ -11,6 +11,10 @@ const app = express();
 
 const linebotParser = bot.parser();
 
+app.get('/',function(req,res){
+res.send("Helo");
+
+})
 app.post('/linewebhook', linebotParser);
 
 bot.on('message', function (event) {
