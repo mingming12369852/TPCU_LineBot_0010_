@@ -4,3 +4,29 @@
 2cf7831a10e737ed5a961f55b554aba8
 
 xPq70ID8sUOuyW4eoWYRt9Q0WpIk3VZ0ihdk28s9geYCdi6d/9dxDWPaufAvrW/GjdxSKN0Zf/f9A1YMYteFUlFrOaQ0ZFeBRpGHF1Vu7lxs5rjRdliKsOip8vdADQonaSIluZO3VChaN4RRvB5M4wdB04t89/1O/w1cDnyilFU=
+
+
+
+
+bot.on('message', function(event) {
+  event.reply(event.message.text).then(function(data) {
+    console.log('Success', data);
+  }).catch(function(error) {
+    console.log('Error', error);
+  });
+}
+);
+
+
+
+function(event) {
+  event.reply(event.message.text).then(function(data) {
+    console.log('Success', data);
+  })
+
+
+
+  .catch(function(error) {
+    console.log('Error', error);
+  });
+}
