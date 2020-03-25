@@ -1,5 +1,12 @@
+
+'use strict';
+const result = require('dotenv').config();
+if (result.error) throw result.error
+
 const linebot = require('linebot');
-const express = require('express');
+const Express = require('express');
+const BodyParser = require('body-parser');
+
 
 const bot = linebot({
 	channelId: process.env.CHANNEL_ID,
@@ -7,25 +14,33 @@ const bot = linebot({
 	channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 });
 
-const app = express();
-
 const linebotParser = bot.parser();
+const app = Express();
+// for line webhook usage
+app.post('/linewebhook', linebotParser);
 
-app.get('/',function(req,res){
-    res.send('Hello Worl,,,,,,,,,,,,,,,,,,,,,,,,,,,d!');
+app.use(BodyParser.urlencoded({ extended: true }));
+app.use(BodyParser.json());
+
+// a http endpoint for trigger broadcast
+app.post('/broadcast', (req, res) => {
+  bot.broadcast(req.body.message).then(() => {
+    res.send('broadcast ok');
+  }).catch(function (error) {
+    res.send('broadcast fail');
+  });
 });
 
-app.post('/webhook', linebotParser);
+app.listen(3000);
 
+// echo user message
 bot.on('message', function (event) {
-	event.reply(event.message.text).then(function (data) {
-		console.log('Success', data);
-	}).catch(function (error) {
-		console.log('Error', error);
-	});
-});
-
-
-bot.listen('/linewebhook', 3000, function () {
-    console.log('[BOT已準備就緒]');
+  // get user message from `event.message.text`
+  // reply same message
+  var replyMsg = `${event.message.text}`;
+  event.reply(replyMsg).then(function (data) {
+    console.log('ok')
+  }).catch(function (error) {
+    console.error(error)
+  });
 });
