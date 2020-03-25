@@ -15,7 +15,7 @@ app.get('/',function(req,res){
 res.send("Helo");
 
 });
-app.post('/linewebhook', linebotParser);
+app.post('/linewebhook/', linebotParser);
 
 bot.on('message', function (event) {
   event.reply(event.message.text).then(function (data) {
