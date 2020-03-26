@@ -24,3 +24,5 @@ const bot = linebot({
 
 
 line hurl: https://line213.herokuapp.com/linewebhook
+
+https://line213.herokuapp.com/linewebhook/
