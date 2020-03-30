@@ -195,12 +195,12 @@ function chat_with(message) {
 
 function RunLineBot() { //啟動LineBot 機器人 對話狀態
   bot.on('message', function(event) {
+    console.log(event);
 
     var userSay = event.message.text;
     //判斷 用戶傳送的訊息的格式
-    console.log(status + "++++++++++=NEW TIME");
+    // console.log(status + "++++++++++=NEW TIME");
     switch (status) {
-
       case -1:
         if (userSay == '說話') {
           event.reply(['&!#(*$(!#*&@^()))', "終於可以說話了. "]);
@@ -215,8 +215,8 @@ function RunLineBot() { //啟動LineBot 機器人 對話狀態
           case 'text':
 
             switch (event.message.text) {
-              case '如何使用?':
-                event.reply('請依照格式輸入學號....');
+              case '如何使用？':
+                event.reply('請輸入繳交資料並以格式輸入');
 
                 break;
               case '繳交資料':
@@ -245,8 +245,7 @@ function RunLineBot() { //啟動LineBot 機器人 對話狀態
         break;
 
       case 1:
-        console.log(userSay + "dddddddddddd");
-        console.log('TIME');
+
         if (userSay.length == 17) {
           // console.log('==END==');
           status = 0;
@@ -292,145 +291,6 @@ function RunLineBot() { //啟動LineBot 機器人 對話狀態
 
   });
 }
-// startLineBot();
-// XD();
-
-function XD() {
-
-  bot.on('message', function(event) {
-
-    switch (status) {
-      case 1:
-
-        var userMessage = event.message.text;
-
-        switch (userMessage) {
-          case '繳交作業':
-
-            break;
-          default:
-
-        }
-        if (event.message.text == '123') {
-          event.reply(['你已進入安全模式', '提示：輸入密碼']);
-          status = 2;
-        } else if (event.message.text == '000') {
-          event.reply(['安全模式密碼：456']);
-        }
-        break;
-      case 2:
-        if (event.message.text == '456') {
-          event.reply('你已完成登入');
-        } else if (event.message.text == '取消') {
-          event.reply('你已取消登入');
-        }
-        break;
-      default:
-
-    }
-
-  });
-
-}
-
-function startLineBot() {
-  // 當有人傳送訊息給Bot時
-  bot.on('message', function(event) {
-    console.log('XDDD');
-    var userMessage = event.message.text;
-
-
-    if (event.message.type == 'text') {
-
-      if (userMessage == '測試選單') {
-        event.reply(mueu);
-      } else if (userMessage == 'debug') {
-        event.reply(['輸入："測試選單"', '輸入：長度17的字串', '輸入："繳交作業"', '當前版本：' + version]);
-
-      } else if (userMessage == '繳交作業') {
-        event.reply(['1.請輸入你及你的組員學號', '範例："12345678 12345678"']);
-
-      } else if (userMessage == '123') {
-
-        if (event.message.text == '456') {
-          event.reply('輸入錯誤');
-        }
-
-      } else if (userMessage.length != 17) {
-        event.reply(['1.請輸入你及你的組員學號', '範例："12345678 12345678"']);
-      } else if (userMessage.length == 17) {
-        event.reply(["2.請依照題目順序上傳影片，謝謝", '[影片上傳上無功能，請勿上傳。]'], ['送出檔案後直接關閉即可。謝謝^^']);
-      }
-    }
-    if (event.message.type == 'video') {
-      event.message.content().then(function(content) {
-        console.log(content.toString('base64'));
-      });
-    }
-
-    // else if (userMessage.length == 17) {
-    //   event.reply(["2.請依照題目順序上傳影片，謝謝", '[影片上傳上無功能，請勿上傳。]', '[開發人員請輸入："完成" ]']);
-    // } else if (userMessage.length != 17) {
-    //   event.reply(['1.請輸入正確的學號格式', '範例："12345678 12345678"']);
-    // }
-
-
-
-    // // event.message.text是使用者傳給bot的訊息
-    // // 準備要回傳的內容
-    // switch (userMessage) {
-    //   //======================================用戶對話區
-    //   case "如何使用":
-    //     event.reply('1.請輸入正確的學號格式', '範例："12345678 12345678"');
-    //     break;
-    //
-    //   case '版本':
-    //     event.reply('v0.1.7');
-    //     break;
-    //   case 'XD':
-    //     // var replyMsg = '請輸入正確的學號格式';
-    //
-    //
-    //     break;
-    //
-    //     //======================================上繳功能區
-    //   case '繳交作業':
-    //     event.reply(["2.請依照題目順序上傳影片，謝謝", '[影片上傳上無功能，請勿上傳。]']);
-    //
-    //     break;
-    //   case userMessage.length == 17:
-    //     event.reply();
-    //
-    //     break;
-    //   default:
-    //     event.reply('我不知道你在說甚麼:P');
-    //     event.reply('你可以說話大聲一點嗎，我聽得不是很清楚..');
-    //     event.reply('你是在大聲甚麼拉!!!!!');
-    //
-    // }
-
-
-
-  });
-
-}
-
-
-
-// bot.on('message', function(id) {
-//
-//   if (userMessage.length != 17) {
-//     event.reply("格式錯誤 \n 範例：'12345678 12345678' ", );
-//
-//   } else if (userMessage.length == 17) {
-//     event.reply("2.請依照題目順序上傳影片。\n 然後不要真的傳影片給我。功能尚未完成... ");
-//     break;
-//   } else if (userMessage.length == "取消") {
-//     event.reply("ok");
-//
-//   }
-//
-// });
 
 
 
@@ -440,11 +300,3 @@ function startLineBot() {
 app.listen(process.env.PORT || 80, function() {
   console.log('LineBot is running Time.');
 });
-
-
-
-// event.reply(replyMsg).then(function(data) {
-//   // 當訊息成功回傳後的處理
-// }).catch(function(error) {
-//   // 當訊息回傳失敗後的處理
-// });
