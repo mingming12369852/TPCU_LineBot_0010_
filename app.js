@@ -265,6 +265,10 @@ function RunLineBot() {
           time++;
           userID = userID.replace(/\s/g, "_");
           event.reply(['已經接收到影片', '名稱：' + userID + '_' + time]);
+          //影片轉換成base64
+          // event.message.content().then(function(content) {
+          //   console.log(content.toString('base64'));
+          // });
         }
         break;
     }
