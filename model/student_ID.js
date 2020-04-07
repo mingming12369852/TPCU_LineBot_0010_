@@ -1,13 +1,20 @@
-var text = "hello";
-module.exports = text;
+module.exports = {
 
+  name: function(a) {
+    var b = a;
+    var arr = b.split("_");
+    console.log(arr);
 
-function verification(message) {
-  if (message.lenght != 17) {
-    console.log("長度未滿 17");
-  } else {
-    //回復請上傳影片
+    console.log(arr[0]);
+    console.log(arr[1]);
+
+    if (arr[0].indexOf('4', 0) | arr[0].indexOf('F', 0)) {
+      console.log('YES');
+    }
+    if (arr[1].indexOf('4', 0) | arr[1].indexOf('F', 0)) {
+      console.log('YES');
+    }
+
   }
-
 
 }

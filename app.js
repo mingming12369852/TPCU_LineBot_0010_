@@ -4,6 +4,7 @@ const request = require("request");
 const linebot = require('linebot');
 const upData = require("./model/DriveAPI.js");
 const talk = require("./model/talk.js");
+const student_ID = require("./model/student_ID.js");
 
 var Today = new Date();
 
@@ -22,28 +23,19 @@ var studentNumber;
 var mp4Name;
 var base64Code;
 
-
-
-// var lineToken = 'Kuser485179732815013851'; //Line 用戶 號碼
-// var date = '2020/00/00' // 日期
-// var studentNumber = '40831111_40832333'; // 組員學號
-// var mp4Name = '40831111_40832222_01'; // 影片名稱
-// var base64Code = '1001010001'; // 影片編碼
-
-
 // 本機測試
-const bot = linebot({
-  channelId: '1653984063',
-  channelSecret: '2cf7831a10e737ed5a961f55b554aba8',
-  channelAccessToken: 'xPq70ID8sUOuyW4eoWYRt9Q0WpIk3VZ0ihdk28s9geYCdi6d/9dxDWPaufAvrW/GjdxSKN0Zf/f9A1YMYteFUlFrOaQ0ZFeBRpGHF1Vu7lxs5rjRdliKsOip8vdADQonaSIluZO3VChaN4RRvB5M4wdB04t89/1O/w1cDnyilFU='
-});
+// const bot = linebot({
+//   channelId: '1653984063',
+//   channelSecret: '2cf7831a10e737ed5a961f55b554aba8',
+//   channelAccessToken: 'xPq70ID8sUOuyW4eoWYRt9Q0WpIk3VZ0ihdk28s9geYCdi6d/9dxDWPaufAvrW/GjdxSKN0Zf/f9A1YMYteFUlFrOaQ0ZFeBRpGHF1Vu7lxs5rjRdliKsOip8vdADQonaSIluZO3VChaN4RRvB5M4wdB04t89/1O/w1cDnyilFU='
+// });
 
 // // 正式上線
-// const bot = linebot({
-//   channelId: process.env.CHANNEL_ID,
-//   channelSecret: process.env.CHANNEL_SECRET,
-//   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
-// });
+const bot = linebot({
+  channelId: process.env.CHANNEL_ID,
+  channelSecret: process.env.CHANNEL_SECRET,
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
+});
 
 var mueu = {
   "type": "bubble",
