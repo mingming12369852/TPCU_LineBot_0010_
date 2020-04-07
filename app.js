@@ -300,9 +300,10 @@ function RunLineBot() {
 
             console.log('>>>>>>>>>>>>>>>>>.||||||||||||||||||||*' + base64Code);
             upData.UpDataInGoogleDrive(mp4Nmae, date, base64Data);
+            ExcelLog(lineToken, date, studentNumber, mp4Nmae, base64Code);
             // console.log(base64Code);
             // base64Code = 'XD';
-            // ExcelLog(lineToken, date, studentNumber, mp4Nmae, base64Code);
+
           });
 
 
